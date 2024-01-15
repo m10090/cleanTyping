@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Typing from "./Typing";
 import Navbar from "./navbar";
-import Setting from "./settings/settings.tsx";
+import Setting from "./settings/page.tsx";
 import About from "./about/page.tsx";
 export default function App() {
   return (

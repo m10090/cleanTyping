@@ -1,27 +1,19 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
-import TypingHander, { cursorMovement } from "./util/TypingHander";
+import TypingHander, { cursorMovement , getResult} from "./util/TypingHander";
+import { getText } from "./util/requests";
+import Result from "./result";
 export default function Typing() {
   const [right, setRight] = useState<string[]>([]);
   const [text, setText] = useState<string[]>([]);
   const author = useRef<string>("");
   useEffect(() => {
-    const q = async () => {
-      const response = await fetch(
-        `https://api.quotable.io/random?minLength=${500}&maxLength=${1000}`,
-      );
-      if (response.status === 404) {
-        alert("lower the min length or raise the max length");
-        window.location.href = "/settings";
-        return;
+    getText(setText, author);
+    window.addEventListener("keydown", function (e) {
+      if (e.key == 'space' && e.target == document.body) {
+        e.preventDefault();
       }
-
-      const data = await response.json();
-      author.current = data.author;
-      const k = data.content.split("");
-      setText(k);
-    };
-    q();
+    });
   }, []);
   useEffect(() => {
     const interval = setInterval(cursorMovement(right.length), 10);
@@ -32,28 +24,27 @@ export default function Typing() {
   useEffect(() => {
     const handler = TypingHander(setRight, text[right.length]);
     document.addEventListener("keydown", handler);
+    document
+      .getElementsByClassName("letter")
+      [right.length - 1]?.scrollIntoView({ behavior: "smooth" });
     return () => {
       document.removeEventListener("keydown", handler);
     };
   }, [text, right]);
-  useEffect(() => {
-    document
-      .getElementsByClassName("letter")
-      [right.length - 1]?.scrollIntoView({ behavior: "smooth" });
-  }, [right, text]);
+  if ((right.length === text.length) && (text.length)) {
+    return <Result author={author.current} wpm={getResult()}/>;
+  }
 
   return (
     <div id="typing">
       <div id="text">
-        {
-          undefined || text.map((letter, index) => {
-            return (
-              <span key={index} className={`letter ${right[index] ?? ""}`}>
-                {letter}
-              </span>
-            );
-          })
-        }
+        {text.map((letter, index) => {
+          return (
+            <span key={index} className={`letter ${right[index] ?? ""}`}>
+              {letter}
+            </span>
+          );
+        })}
       </div>
       <span id="cursor">|</span>
     </div>

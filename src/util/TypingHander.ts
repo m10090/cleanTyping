@@ -25,3 +25,6 @@ export function cursorMovement(right: number) {
     cursor.style.top = letterRect.top + 3 + "px";
   };
 }
+export function getResult(){
+  return 
+}

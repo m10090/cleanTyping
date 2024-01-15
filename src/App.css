@@ -85,3 +85,10 @@
 #typing {
   padding: 0 10%;
 }
+#text {
+  overflow-y: scroll;
+  height: 50vh;
+}
+#text::-webkit-scrollbar {
+  display: none;
+}
