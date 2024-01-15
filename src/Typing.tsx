@@ -36,22 +36,27 @@ export default function Typing() {
       document.removeEventListener("keydown", handler);
     };
   }, [text, right]);
+  useEffect(() => {
+    document
+      .getElementsByClassName("letter")
+      [right.length - 1]?.scrollIntoView({ behavior: "smooth" });
+  }, [right, text]);
+
   return (
     <div id="typing">
       {/*<div id="author">{author.current}</div> */}
       <div id="text">
-        {text.map((letter, index) => {
-          return (
-            <span key={index} className={`letter ${right[index] ?? ""}`}>
-              {letter}
-            </span>
-          );
-        })}
+        {this.render(
+          text.map((letter, index) => {
+            return (
+              <span key={index} className={`letter ${right[index] ?? ""}`}>
+                {letter}
+              </span>
+            );
+          }),
+        )}
         <span id="cursor">|</span>
       </div>
-      {document
-        .getElementsByClassName("letter")
-        [right.length - 1]?.scrollIntoView({ behavior: "smooth" })}
     </div>
   );
 }
