@@ -74,10 +74,14 @@
 }
 
 @keyframes gradient {
-  100%,0%{
+  100%,
+  0% {
     background-color: #009fff;
   }
-  50%{
+  50% {
     background-color: #ec2f4b;
   }
- }
+}
+#typing {
+  padding: 0 10%;
+}

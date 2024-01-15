@@ -8,8 +8,14 @@ export default function Typing() {
   useEffect(() => {
     const q = async () => {
       const response = await fetch(
-        `https://api.quotable.io/random?minLength=${300}&maxLength=${1000}`,
+        `https://api.quotable.io/random?minLength=${500}&maxLength=${1000}`,
       );
+      if (response.status === 404) {
+        alert("lower the min length or raise the max length");
+        window.location.href = "/settings";
+        return;
+      }
+
       const data = await response.json();
       author.current = data.author;
       const k = data.content.split("");
@@ -32,7 +38,7 @@ export default function Typing() {
   }, [text, right]);
   return (
     <div id="typing">
-      <div id="author">{author.current}</div>
+      {/*<div id="author">{author.current}</div> */}
       <div id="text">
         {text.map((letter, index) => {
           return (

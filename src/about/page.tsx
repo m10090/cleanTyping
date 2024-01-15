@@ -11,7 +11,7 @@ export default function About() {
         your help to make this page better{" "}
         <h6>
           like implementing your styles at
-          <a href = "https://github.com/m10090/cleanTyping">
+          <a href="https://github.com/m10090/cleanTyping">
             <img src={githubImage} />
           </a>
         </h6>
