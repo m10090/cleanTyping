@@ -1,0 +1,30 @@
+.options {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+}
+.options h3 {
+  width: 20%;
+}
+.selections {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 100%;
+  width: 100%;
+}
+.selections > div {
+  padding: 10px;
+}
+.selected {
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  color: #000;
+}
+#settings ul {
+  list-style: none;
+}
