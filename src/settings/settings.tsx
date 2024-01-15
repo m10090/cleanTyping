@@ -1,4 +1,4 @@
-import SelectOptions from "./select";
+import SelectOptions from "./selectOptions";
 import "./settings.css";
 export default function Settings() {
   return (
