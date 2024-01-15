@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
+.letter {
+  font-size: 2rem;
+  font-family: "Space Mono", monospace;
+}
+.correct {
+  color: #00ff00;
+}
+.incorrect {
+  color: #ff0000;
+}
+#root {
+  /* position: relative; */
+  margin-top: 10%;
+}
+#typing {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+#text {
+  padding: 10px;
+}
+#Navbar {
+  display: flex;
+  position: fixed;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #1a1a1a;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  top: 0;
+  width: 100%;
+}
+#Navbar-Title {
+  font-size: 1.2rem;
+  font-family: "Space Mono", monospace;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#cursor {
+  color: #ffffff;
+  animation: blink 1s infinite;
+  font-size: 2rem;
+  position: fixed;
+}
+.typingMotion {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.15em; /* Adjust as needed */
+}
+.typingMotion a:hover {
+  animation: gradient 4s ease infinite;
+  color: hsla(0, 0%, 100%, 0);
+  background-size: auto auto;
+  background-clip: text;
+}
+
+@keyframes gradient {
+  100%,0%{
+    background-color: #009fff;
+  }
+  50%{
+    background-color: #ec2f4b;
+  }
+ }
