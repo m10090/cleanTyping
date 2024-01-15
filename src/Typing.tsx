@@ -44,19 +44,18 @@ export default function Typing() {
 
   return (
     <div id="typing">
-      {/*<div id="author">{author.current}</div> */}
       <div id="text">
-        {this.render(
-          text.map((letter, index) => {
+        {
+          undefined || text.map((letter, index) => {
             return (
               <span key={index} className={`letter ${right[index] ?? ""}`}>
                 {letter}
               </span>
             );
-          }),
-        )}
-        <span id="cursor">|</span>
+          })
+        }
       </div>
+      <span id="cursor">|</span>
     </div>
   );
 }
