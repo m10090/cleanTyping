@@ -12,6 +12,7 @@
   "dependencies": {
     "@stylexjs/stylex": "^0.4.1",
     "cookies": "^0.9.1",
+    "js-cookie": "^3.0.5",
     "react": "^18.2.0",
     "react-cookie": "^7.0.1",
     "react-dom": "^18.2.0",

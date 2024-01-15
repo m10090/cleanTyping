@@ -8,7 +8,7 @@ export default function Typing() {
   useEffect(() => {
     const q = async () => {
       const response = await fetch(
-        `https://api.quotable.io/random?minLength=${150}&maxLength=${300}`,
+        `https://api.quotable.io/random?minLength=${300}&maxLength=${1000}`,
       );
       const data = await response.json();
       author.current = data.author;
