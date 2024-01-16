@@ -9,13 +9,13 @@ export default function Settings() {
           <SelectOptions id="hardness" options={["easy", "medium", "hard"]} information="this is a test" text= "Hardness"/>
         </li>
         <li>
-          <SelectOptions id="stop-on-error" options={["True", "False"]} />
+          <SelectOptions id="stop-on-error" options={["True", "False"]} information="this is a test" text ="End on error" />
         </li>
         <li>
-          <SelectOptions id="blind-mode" options={["True", "False"]} />
+          <SelectOptions id="blind-mode" options={["True", "False"]} information="this is a test" text="Blind Mode" />
         </li>
         <li>
-          <SelectOptions id="show-timer" options={["True", "False"]} />
+          <SelectOptions id="timer" options={["True", "False"]} information="this is a test" text="Timer"/>
         </li>
         <li>
           <label id="max word number"> max word number</label>
