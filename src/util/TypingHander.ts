@@ -1,4 +1,4 @@
-export default function typingHander(setRight, expected: string) {
+export function typingHander(setRight, expected: string) {
   if (expected == undefined) return function () {};
   return function (e) {
     if (e.metaKey || e.ctrlKey || e.altKey || e.key === "Shift") return;

@@ -28,3 +28,25 @@
 #settings ul {
   list-style: none;
 }
+.information{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 70px;
+  max-width: 100px;
+  min-height: 70px;
+  overflow-wrap: break-word;
+  background-color: #e1e1e1;
+  color: #000;
+  border-radius: 5px;
+}
+img {
+  width: 0.5rem;
+}
+.btn-information{
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+}

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
-import TypingHander, { cursorMovement , getResult} from "./util/TypingHander";
+import {typingHander,  cursorMovement , getResult} from "./util/TypingHander";
 import { getText } from "./util/requests";
 import Result from "./result";
 export default function Typing() {
@@ -22,7 +22,7 @@ export default function Typing() {
     };
   }, [right, text]);
   useEffect(() => {
-    const handler = TypingHander(setRight, text[right.length]);
+    const handler = typingHander(setRight, text[right.length]);
     document.addEventListener("keydown", handler);
     document
       .getElementsByClassName("letter")

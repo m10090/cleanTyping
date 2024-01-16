@@ -1,5 +1,5 @@
-import Cookies from "js-cookie";
 import { useState } from "react";
+import infoImage from "../assets/info.gif";
 export default function SelectOptions({
   id,
   options,
@@ -11,51 +11,59 @@ export default function SelectOptions({
   text: string;
   information: string;
 }) {
+  const informationElement = (
+    <div
+      className="information"
+      id={`information-${id}`}
+      style={{
+        top:
+          document
+            ?.getElementById(`btn-information-${id}`)
+            ?.getBoundingClientRect().y -
+          document.getElementById(`btn-information-${id}`)?.clientHeight -
+          document.getElementById(`information-${id}`)?.clientHeight +
+          "px",
+        left:
+          document
+            ?.getElementById(`btn-information-${id}`)
+            ?.getBoundingClientRect().left + "px",
+        translate: "-50%",
+      }}
+    >
+      {information}
+    </div>
+  );
+
   const [s, setS] = useState(false);
   return (
     <div id={id} className="options">
-      <h3>{text}</h3>
-      <div
-        id={`bt-information-${id}`}
-        onMouseOver={() => {
-          setS(true);
-        }}
-        onMouseLeave={() => {
-          setS(false);
-        }}
-      >
-        i
-      </div>
-      {s && (
+      <h3>
+        {text}
         <div
-          id={`information-${id}`}
-          style={{
-            position: "fixed",
-            bottom:
-              document
-                .getElementById(`bt-information-${id}`)
-                .getBoundingClientRect().bottom +
-              // document.getElementById(`bt-information-${id}`).clientHeight +
-              "px",
-            left:
-              document
-                .getElementById(`bt-information-${id}`)
-                .getBoundingClientRect().left + "px",
-            translate: "-50%"
+          id={`btn-information-${id}`}
+          className="btn-information"
+          onMouseOver={() => {
+            setS(true);
+          }}
+          onMouseLeave={() => {
+            setS(false);
           }}
         >
-          {information}
+          <img src={infoImage} />
         </div>
-      )}
+      </h3>
+      {s && informationElement}
       <div className="selections">
         {options.map((option) => {
           return (
             <div key={option}>
               <button
-                className={Cookies.get(id) === option ? "selected" : ""}
+                className={
+                  localStorage.getItem(id) === option ? "selected" : ""
+                }
                 onClick={() => {
-                  Cookies.set(id, option, { expires: 365 });
-                  window.location.reload();
+                  localStorage.setItem(id, option);
+                  location.reload();
                 }}
               >
                 {option}
