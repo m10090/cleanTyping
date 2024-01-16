@@ -6,7 +6,7 @@ export default function Settings() {
       <input type="search" />
       <ul>
         <li>
-          <SelectOptions id="hardness" options={["easy", "medium", "hard"]} />
+          <SelectOptions id="hardness" options={["easy", "medium", "hard"]} information="this is a test" text= "Hardness"/>
         </li>
         <li>
           <SelectOptions id="stop-on-error" options={["True", "False"]} />
