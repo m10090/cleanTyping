@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
-import {typingHander,  cursorMovement , getResult} from "./util/TypingHander";
+import { typingHander, cursorMovement, getResult } from "./util/TypingHander";
 import { getText } from "./util/requests";
 import Result from "./result";
 export default function Typing() {
@@ -10,7 +10,7 @@ export default function Typing() {
   useEffect(() => {
     getText(setText, author);
     window.addEventListener("keydown", function (e) {
-      if (e.key == 'space' && e.target == document.body) {
+      if (e.key == "space" && e.target == document.body) {
         e.preventDefault();
       }
     });
@@ -22,7 +22,11 @@ export default function Typing() {
     };
   }, [right, text]);
   useEffect(() => {
-    const handler = typingHander(setRight, text[right.length]);
+    const handler = typingHander(
+      setRight,
+      text[right.length],
+      right.length - text.slice(0,right.length).lastIndexOf(" "),
+    );
     document.addEventListener("keydown", handler);
     document
       .getElementsByClassName("letter")
@@ -31,8 +35,8 @@ export default function Typing() {
       document.removeEventListener("keydown", handler);
     };
   }, [text, right]);
-  if ((right.length === text.length) && (text.length)) {
-    return <Result author={author.current} wpm={getResult()}/>;
+  if (right.length === text.length && text.length) {
+    return <Result author={author.current} wpm={getResult()} />;
   }
 
   return (

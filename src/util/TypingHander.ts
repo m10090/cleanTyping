@@ -1,9 +1,22 @@
-export function typingHander(setRight, expected: string) {
+export function typingHander(
+  setRight,
+  expected: string,
+  lastSpaceIndex: number,
+) {
   if (expected == undefined) return function () {};
   return function (e) {
+    // console.log(e);
+    if ((e.ctrlKey || e.altKey) && e.key == "Backspace") {
+      if (lastSpaceIndex >0)
+        setRight((right: string[]) => right.slice(0, -lastSpaceIndex));
+      else if (lastSpaceIndex == 0)
+        setRight((right: string[]) => right.slice(0, -1));
+    }
     if (e.metaKey || e.ctrlKey || e.altKey || e.key === "Shift") return;
-    if (e.key == "Backspace") setRight((right: string[]) => right.slice(0, -1));
-    else
+    if (e.key == "Backspace") {
+      localStorage.getItem("no-delete") === "False" &&
+        setRight((right: string[]) => right.slice(0, -1));
+    } else
       e.key === expected
         ? setRight((right: string[]) => [...right, "correct"])
         : setRight((right: string[]) => [...right, "incorrect"]);
@@ -25,6 +38,6 @@ export function cursorMovement(right: number) {
     cursor.style.top = letterRect.top + 3 + "px";
   };
 }
-export function getResult(){
-  return 
+export function getResult() {
+  return;
 }

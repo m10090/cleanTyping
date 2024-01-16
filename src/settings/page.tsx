@@ -31,6 +31,14 @@ export default function Settings() {
         </li>
         <li>
           <SelectOptions
+          id ="no-delete"
+          options={["True", "False"]}
+          information="this is a test"
+          text="No Delete"
+          />
+        </li>
+        <li>
+          <SelectOptions
             id="timer"
             options={["True", "False"]}
             information="this is a test
