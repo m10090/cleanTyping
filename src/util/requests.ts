@@ -1,4 +1,3 @@
-import Cookies from "js-cookie";
 export async function getText(
   setText: React.Dispatch<React.SetStateAction<string[]>>,
   author: { current: string },
