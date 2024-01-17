@@ -1,16 +1,41 @@
 import SelectOptions from "./chooseSettings";
 import "./settings.css";
+import { useEffect } from "react";
 export default function Settings() {
+  useEffect(() => {
+    document
+      .getElementById("settings-search")
+      .addEventListener("input", function () {
+        const input = this as HTMLInputElement;
+        const lis = document.querySelectorAll(
+          "#settings ul li",
+        ) as NodeListOf<HTMLLIElement>;
+        lis.forEach((li) => {
+          const text = li.textContent?.toLowerCase() ?? "";
+          if (text.includes(input.value.toLowerCase())) {
+            li.style.display = "list-item";
+          } else {
+            li.style.display = "none";
+          }
+        });
+      });
+  }, []);
   return (
     <div id="settings">
-      <input type="search" />
+      <div className="center-content">
+        <input
+          type="search"
+          id="settings-search"
+          placeholder="Search..."
+        />
+      </div>
       <ul>
         <li>
           <SelectOptions
-            id="hardness"
+            id="difficulty"
             options={["easy", "medium", "hard"]}
             information="this is a test"
-            text="Hardness"
+            text="Difficulty"
           />
         </li>
         <li>
@@ -31,10 +56,10 @@ export default function Settings() {
         </li>
         <li>
           <SelectOptions
-          id ="no-delete"
-          options={["True", "False"]}
-          information="this is a test"
-          text="No Delete"
+            id="no-delete"
+            options={["True", "False"]}
+            information="this is a test"
+            text="No Delete"
           />
         </li>
         <li>
@@ -45,14 +70,6 @@ export default function Settings() {
             please be bigger be bigger bigger"
             text="Timer"
           />
-        </li>
-        <li>
-          <label id="max word number"> max word number</label>
-          <input type="number" />
-        </li>
-        <li>
-          <label id="min word length"> min word length</label>
-          <input type="number" />
         </li>
       </ul>
     </div>

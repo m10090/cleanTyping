@@ -7,7 +7,8 @@ export function typingHander(
   return function (e) {
     // console.log(e);
     if ((e.ctrlKey || e.altKey) && e.key == "Backspace") {
-      if (lastSpaceIndex >0)
+      if (localStorage.getItem("no-delete") === "True") return;
+      if (lastSpaceIndex > 0)
         setRight((right: string[]) => right.slice(0, -lastSpaceIndex));
       else if (lastSpaceIndex == 0)
         setRight((right: string[]) => right.slice(0, -1));
@@ -26,9 +27,8 @@ let cursorPos = 0;
 export function cursorMovement(right: number) {
   return function () {
     const cursor = document.getElementById("cursor");
-    const letterRect = document
-      .getElementsByClassName("letter")
-      [right]?.getBoundingClientRect();
+    const letter = document.getElementsByClassName("letter");
+    const letterRect = letter[right]?.getBoundingClientRect();
     if (letterRect === undefined || cursor === undefined) {
       return;
     }
