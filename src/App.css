@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tajawal&display=swap");
 .letter {
   font-size: 2rem;
   font-family: "Space Mono", monospace;
@@ -18,7 +19,6 @@
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-
 }
 #text {
   padding: 10px;
@@ -61,6 +61,7 @@
   animation: blink 1s infinite;
   font-size: 2rem;
   position: fixed;
+  font-family: "Roboto";
 }
 .typingMotion {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
@@ -94,3 +95,11 @@
 #text::-webkit-scrollbar {
   display: none;
 }
+.Dashboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+}
+

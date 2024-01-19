@@ -2,5 +2,9 @@ export interface ILogSection {
   current: string;
   written: string;
   time: number;
-  delete?: number; // when ctrl + backspace is pressed get the number that was deleted
+  lastSpaceIndex?: number; // when ctrl + backspace is pressed get the number that was deleted
+}
+export interface IReplay {
+  written: string;
+  right: boolean;
 }

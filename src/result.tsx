@@ -1,11 +1,11 @@
-import { useState, useEffect , useRef} from "react";
-import { ILogSection } from "./util/interfaces";
+import { useState, useEffect, useRef } from "react";
+import { ILogSection, IReplay } from "./util/interfaces";
 export default function Result({ author, result, log }) {
   const logRef = useRef(log);
   useEffect(() => {
     // document.addEventListener("keydown", () => location.reload());
   }, []);
-  const [replay, setReplay] = useState("");
+  const [replay, setReplay] = useState<IReplay[]>([]);
   useEffect(() => {
     const logTop: ILogSection = logRef.current[0];
     if (logTop == undefined) return;
@@ -13,18 +13,35 @@ export default function Result({ author, result, log }) {
     console.log(logRef.current);
     setTimeout(() => {
       if (logTop.written == "Backspace") {
-        setReplay(replay.slice(0, logTop?.delete ?? -1));
+        setReplay(replay.slice(0, logTop?.lastSpaceIndex ?? -1));
         return;
       }
-      setReplay((replay) => replay + logTop.written);
-    }, logTop.time*10);
+      setReplay((replay) => [
+        ...replay,
+        {
+          written: logTop.written,
+          right: logTop.written === logTop.current,
+        },
+      ]);
+    }, logTop.time * 10);
   }, [replay]);
   return (
-    <div>
+    <div className="center-content">
       <h2>{result}</h2>
       <h3> author : {author} </h3>
       <button onClick={() => location.reload()}>Try Again</button>
-      <p id="replay">{replay}</p>
+      <p id="replay">
+        {replay.map((char, index) => {
+          return (
+            <span
+              key={index}
+              className={`letter ${char.right ? "correct" : "incorrect"}`}
+            >
+              {char.written}
+            </span>
+          );
+        })}
+      </p>
     </div>
   );
 }

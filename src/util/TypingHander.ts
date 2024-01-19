@@ -20,12 +20,9 @@ function getTime(): number {
 function getAccuracy(): number {
   const stack = [];
   log.forEach((section) => {
-    if (section.written === "Backspace" && section?.delete) {
-      let temp = section?.delete;
-      while (temp--) stack.pop();
-      return;
-    }
     if (section.written === "Backspace") {
+      let temp = section?.lastSpaceIndex ?? 1;
+      while (temp--) stack.pop();
       stack.pop();
       return;
     }
@@ -48,7 +45,7 @@ export function typingHander(
       else if (lastSpaceIndex == 0)
         setRight((right: string[]) => right.slice(0, -1));
       log.push({
-        delete: lastSpaceIndex,
+        lastSpaceIndex: lastSpaceIndex,
         current: expected,
         written: e.key,
         time: getTime(),
@@ -76,8 +73,8 @@ export function getWPM() {
   let timeTaken = 0;
   log.forEach((section) => {
     timeTaken += section.time;
-    if (section.written === "Backspace" && section?.delete) {
-      let temp = section?.delete;
+    if (section.written === "Backspace" && section?.lastSpaceIndex) {
+      let temp = section?.lastSpaceIndex;
       while (temp--) stack.pop();
       return;
     }
@@ -108,15 +105,24 @@ export function cursorMovement(right: number) {
     cursorPos += Math.max((letterRect.left - cursorPos) / 10, 1);
     cursorPos = Math.min(cursorPos, letterRect.left - 5);
     cursor.style.left = cursorPos + "px";
-    cursor.style.top = letterRect.top + 3 + "px";
+    cursor.style.top = letterRect.top + "px";
   };
 }
 
+function getRealAccuracy() {
+  const stack = [];
+  log.forEach((section) => {
+    if (section.written === "Backspace") {
+      return;
+    }
+    stack.push(section.written === section.current);
+  });
+  return Math.round((100 * stack.filter((x) => x).length) / stack.length) ?? 0;
+}
 export function getResult() {
-  return getWPM() + " WPM" + " " + getAccuracy() + "%";
+  return getWPM() + " WPM" + " with Accuracy " + getAccuracy() + "% real accuracy " + getRealAccuracy() + "%";
 }
 export function getLog() {
   const res = [...log];
-  // log.length = 0;
   return res;
 }

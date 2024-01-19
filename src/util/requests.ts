@@ -17,7 +17,7 @@ export async function getText(
     window.location.href = "/settings";
     return;
   }
-  if (import.meta.env.MODE === 'development'){
+  if (import.meta.env.VITE_HELLO_WORLD?.toLowerCase()  === "true" ){
     setText("hello world".split(""));
     return ;
   }

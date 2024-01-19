@@ -10,23 +10,29 @@ import {
 import { getText } from "./util/requests";
 import Result from "./result";
 const blindMode = localStorage.getItem("blind-mode") === "True";
+const IsTimer = localStorage.getItem("timer") === "True";
 export default function Typing() {
   const [right, setRight] = useState<string[]>([]);
   const [text, setText] = useState<string[]>([]);
+  const [timerValue, setTimerValue] = useState(60);
   const author = useRef<string>("");
   useEffect(onStart(setText, author), []);
   useEffect(cursorAnimation(right), [right, text]);
-  useEffect(typingEvent(setRight, text,right), [text, right]);
-  if (right.length === text.length && text.length) {
-    return <Result author={author.current} result={getResult()} log = {getLog()} />;
+  useEffect(typingEvent(setRight, text, right), [text, right]);
+  useEffect(timer(setTimerValue), []);
+  if ((right.length === text.length && text.length) || timerValue <= 0) {
+    return (
+      <Result author={author.current} result={getResult()} log={getLog()} />
+    );
   }
 
   return (
     <div id="typing">
-      <div className="center-content">
+      <div className="Dashboard">
         <h6 id="wpm">WPM: {getWPM() || 0}</h6>
+        <h6 id="timer">Time lift: {timerValue}</h6>
       </div>
-      <div id="text">
+      <p id="text">
         {text.map((letter, index) => {
           if (!blindMode)
             return (
@@ -40,7 +46,7 @@ export default function Typing() {
             </span>
           );
         })}
-      </div>
+      </p>
       <span id="cursor">|</span>
     </div>
   );
@@ -49,10 +55,10 @@ function onStart(setText, author) {
   return () => {
     window.addEventListener("keydown", function (e) {
       if (e.key == "space" && e.target == document.body) {
-        e.preventDefault();
+        e.preventDefault(); // prevent the space to scroll down the page
       }
     });
-    getText(setText, author);
+    getText(setText, author); // get the text from the api
   };
 }
 function typingEvent(setRight, text, right) {
@@ -71,11 +77,21 @@ function typingEvent(setRight, text, right) {
     };
   };
 }
-function cursorAnimation(right) {
+function cursorAnimation(right: string[]) {
   return () => {
     const interval = setInterval(cursorMovement(right.length), 10);
     return () => {
       clearInterval(interval);
     };
+  };
+}
+
+function timer(setTimerValue: React.Dispatch<React.SetStateAction<number>>) {
+  if (!IsTimer) return () => {};
+  return () => {
+    setInterval(
+      () => setTimerValue((timerValue: number) => timerValue - 1),
+      1000,
+    );
   };
 }
