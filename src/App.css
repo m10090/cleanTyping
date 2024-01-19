@@ -102,4 +102,9 @@
   width: 100%;
   padding: 10px;
 }
-
+#replay {
+  width: 80%;
+  overflow-wrap: break-word;
+  padding: 0 10%;
+  min-height: 30vh;
+}
