@@ -3,9 +3,9 @@ export async function getText(
   author: { current: string },
 ) {
   const [minLength, maxLength] =
-    localStorage.getItem("difficulty") === "easy"
+    localStorage.getItem("difficulty") === "Easy"
       ? [50,100]
-      : localStorage.getItem("difficulty") == "medium"
+      : localStorage.getItem("difficulty") == "Medium"
         ? [100, 200]
         : [200, 300];
 
@@ -16,6 +16,10 @@ export async function getText(
     alert("lower the min length or raise the max length");
     window.location.href = "/settings";
     return;
+  }
+  if (import.meta.env.MODE === 'development'){
+    setText("hello world".split(""));
+    return ;
   }
 
   const data = await response.json();

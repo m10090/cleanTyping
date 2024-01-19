@@ -33,7 +33,7 @@ export default function Settings() {
         <li>
           <SelectOptions
             id="difficulty"
-            options={["easy", "medium", "hard"]}
+            options={["Easy", "Medium", "Hard"]}
             information="this is a test"
             text="Difficulty"
           />
@@ -43,7 +43,7 @@ export default function Settings() {
             id="stop-on-error"
             options={["True", "False"]}
             information="this is a test"
-            text="End on error"
+            text="Stop On Error"
           />
         </li>
         <li>
