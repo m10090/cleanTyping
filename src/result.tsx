@@ -8,7 +8,6 @@ export default function Result({ author, result, log }) {
     const logTop: ILogSection = logRef.current[0];
     if (logTop == undefined) return;
     logRef.current = logRef.current.slice(1);
-    console.log(logRef.current);
     setTimeout(
       () => {
         if (logTop.written == "Backspace") {

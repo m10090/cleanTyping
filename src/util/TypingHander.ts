@@ -12,9 +12,11 @@ setInterval(() => {
 }, 10); // implement my own timer as performance.now() is not supported only on windows
 // end
 // no export files
+let start = false
 function getTime(): number {
   const temp = time;
   time = 0;
+  if (!start) return (start = true,0);
   return temp;
 }
 function getAccuracy(): number {
