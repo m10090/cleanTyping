@@ -43,7 +43,7 @@ export default function Result({ author, result, log }) {
         })}
       </p>
       <div>
-        <button 
+        <button
           onClick={() => {
             setReplaySpeed(1);
             setReplay([]);
@@ -67,7 +67,7 @@ export default function Result({ author, result, log }) {
             setReplay([]);
             logRef.current = log;
           }}
-          >
+        >
           4x
         </button>
         <button
@@ -76,10 +76,9 @@ export default function Result({ author, result, log }) {
             setReplay([]);
             logRef.current = log;
           }}
-          >
+        >
           8x
         </button>
-
       </div>
     </div>
   );
