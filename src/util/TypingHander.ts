@@ -44,7 +44,7 @@ export function typingHander(
     if ((e.ctrlKey || e.altKey) && e.key == "Backspace") {
       if (noDelete) return;
       if (lastSpaceIndex > 0)
-        setRight((right: string[]) => right.slice(0, -lastSpaceIndex));
+        setRight((right: string[]) => right.slice(0, -lastSpaceIndex + 1));
       else if (lastSpaceIndex == 0)
         setRight((right: string[]) => right.slice(0, -1));
       log.push({
