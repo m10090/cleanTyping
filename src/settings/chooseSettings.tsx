@@ -1,5 +1,4 @@
 import { useState } from "react";
-import infoImage from "../assets/info.gif";
 export default function SelectOptions({
   id,
   options,

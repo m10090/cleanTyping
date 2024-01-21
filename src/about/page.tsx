@@ -1,4 +1,3 @@
-import githubImage from "../assets/github-desktop.svg";
 export default function About() {
   return (
     <div>
