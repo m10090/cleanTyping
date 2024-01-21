@@ -16,12 +16,12 @@ export default function Navbar() {
         </div>
         <div className="typingMotion">
           <TypeIt options={{ speed: 10 }}>
-          <Link to="/about">About</Link>
+            <Link to="/about">About</Link>
           </TypeIt>
         </div>
         <div className="typingMotion">
           <TypeIt options={{ speed: 10 }}>
-          <Link to="/login">Login</Link>
+            <Link to="/login">Login</Link>
           </TypeIt>
         </div>
       </div>

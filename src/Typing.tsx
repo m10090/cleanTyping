@@ -30,7 +30,7 @@ export default function Typing() {
     <div id="typing">
       <div className="Dashboard">
         <h6 id="wpm">WPM: {getWPM() || 0}</h6>
-        {IsTimer && <h6 id="timer">Time lift: {timerValue}</h6> }
+        {IsTimer && <h6 id="timer">Time lift: {timerValue}</h6>}
       </div>
       <p id="text">
         {text.map((letter, index) => {

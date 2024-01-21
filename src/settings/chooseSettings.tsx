@@ -26,8 +26,7 @@ export default function SelectOptions({
         left:
           document
             ?.getElementById(`btn-information-${id}`)
-            ?.getBoundingClientRect().left + "px",
-        translate: "-50%",
+            ?.getBoundingClientRect().right + "px",
       }}
     >
       {information}
@@ -37,20 +36,17 @@ export default function SelectOptions({
   const [s, setS] = useState(false);
   return (
     <div id={id} className="options">
-      <h3>
+      <h3
+        id={`btn-information-${id}`}
+        className="btn-information"
+        onMouseOver={() => {
+          setS(true);
+        }}
+        onMouseLeave={() => {
+          setS(false);
+        }}
+      >
         {text}
-        <div
-          id={`btn-information-${id}`}
-          className="btn-information"
-          onMouseOver={() => {
-            setS(true);
-          }}
-          onMouseLeave={() => {
-            setS(false);
-          }}
-        >
-          <img src={infoImage} />
-        </div>
       </h3>
       {s && informationElement}
       <div className="selections">

@@ -12,13 +12,14 @@ setInterval(() => {
 }, 10); // implement my own timer as performance.now() is not supported only on windows
 // end
 // no export files
-let start = false
+let start = false;
 function getTime(): number {
   const temp = time;
   time = 0;
-  if (!start) return (start = true,0);
+  if (!start) return (start = true), 1;
   return temp;
 }
+
 function getAccuracy(): number {
   const stack = [];
   log.forEach((section) => {
@@ -122,7 +123,15 @@ function getRealAccuracy() {
   return Math.round((100 * stack.filter((x) => x).length) / stack.length) ?? 0;
 }
 export function getResult() {
-  return getWPM() + " WPM" + " with Accuracy " + getAccuracy() + "% real accuracy " + getRealAccuracy() + "%";
+  return (
+    getWPM() +
+    " WPM" +
+    " with Accuracy " +
+    getAccuracy() +
+    "% real accuracy " +
+    getRealAccuracy() +
+    "%"
+  );
 }
 export function getLog() {
   const res = [...log];

@@ -4,7 +4,7 @@ export async function getText(
 ) {
   const [minLength, maxLength] =
     localStorage.getItem("difficulty") === "Easy"
-      ? [50,100]
+      ? [50, 100]
       : localStorage.getItem("difficulty") == "Medium"
         ? [100, 200]
         : [200, 300];
@@ -17,9 +17,9 @@ export async function getText(
     window.location.href = "/settings";
     return;
   }
-  if (import.meta.env.VITE_HELLO_WORLD?.toLowerCase()  === "true" ){
+  if (import.meta.env.VITE_HELLO_WORLD?.toLowerCase() === "true") {
     setText("hello world".split(""));
-    return ;
+    return;
   }
 
   const data = await response.json();

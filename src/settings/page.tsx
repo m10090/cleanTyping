@@ -23,18 +23,14 @@ export default function Settings() {
   return (
     <div id="settings">
       <div className="center-content">
-        <input
-          type="search"
-          id="settings-search"
-          placeholder="Search..."
-        />
+        <input type="search" id="settings-search" placeholder="Search..." />
       </div>
       <ul>
         <li>
           <SelectOptions
             id="difficulty"
             options={["Easy", "Medium", "Hard"]}
-            information="this is a test"
+            information="Set the number of words"
             text="Difficulty"
           />
         </li>
@@ -42,7 +38,7 @@ export default function Settings() {
           <SelectOptions
             id="stop-on-error"
             options={["True", "False"]}
-            information="this is a test"
+            information="Stop typing when you make a mistake"
             text="Stop On Error"
           />
         </li>
@@ -50,7 +46,7 @@ export default function Settings() {
           <SelectOptions
             id="blind-mode"
             options={["True", "False"]}
-            information="this is a test"
+            information="Don't know if you are typing the right letter"
             text="Blind Mode"
           />
         </li>
@@ -58,7 +54,7 @@ export default function Settings() {
           <SelectOptions
             id="no-delete"
             options={["True", "False"]}
-            information="this is a test"
+            information="Backspace doesn't work"
             text="No Delete"
           />
         </li>
@@ -66,8 +62,7 @@ export default function Settings() {
           <SelectOptions
             id="timer"
             options={["True", "False"]}
-            information="this is a test
-            please be bigger be bigger bigger"
+            information="Type with a timer"
             text="Timer"
           />
         </li>
