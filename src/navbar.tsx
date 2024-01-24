@@ -23,7 +23,7 @@ export default function Navbar() {
         </div>
         <div className="typingMotion">
           <TypeIt options={{ speed: 10 }}>
-            {isAuthenticated && (
+            {!isAuthenticated && (
               <span
                 onClick={() => {
                   loginWithPopup();
@@ -32,7 +32,7 @@ export default function Navbar() {
                 <a>Login</a>
               </span>
             )}
-            {!isAuthenticated && (
+            {isAuthenticated && (
               <span
                 onClick={() => {
                   logout();
