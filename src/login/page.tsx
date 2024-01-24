@@ -1,7 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 export default function LoginButton() {
-  const { loginWithRedirect, isAuthenticated, isLoading, user } = useAuth0();
-  if (isLoading) return <h1>loading ...</h1>;
+  const { loginWithRedirect, isAuthenticated,  user } = useAuth0();
   if (isAuthenticated) {
     // get user info and so it on the page
     return (
