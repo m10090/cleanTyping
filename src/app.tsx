@@ -13,7 +13,7 @@ export default function App() {
           <Route path="/" element={<Typing />} />
           <Route path="/settings" element={<Setting />} />
           <Route path="/about" element={<About />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/user" element={<Login />} />
           <Route path="*" element={<h1>404</h1>} />
         </Routes>
       </div>

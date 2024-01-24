@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import TypeIt from "typeit-react";
 import { useAuth0 } from "@auth0/auth0-react";
 export default function Navbar() {
-  const { logout, loginWithPopup, isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuth0();
   return (
     <div id="Navbar">
       <div id="Navbar-Title">
@@ -23,24 +23,7 @@ export default function Navbar() {
         </div>
         <div className="typingMotion">
           <TypeIt options={{ speed: 10 }}>
-            {!isAuthenticated && (
-              <span
-                onClick={() => {
-                  loginWithPopup();
-                }}
-              >
-                <a>Login</a>
-              </span>
-            )}
-            {isAuthenticated && (
-              <span
-                onClick={() => {
-                  logout();
-                }}
-              >
-                <a>Logout</a>
-              </span>
-            )}
+            <Link to="/user">user</Link>
           </TypeIt>
         </div>
       </div>
