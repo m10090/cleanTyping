@@ -1,10 +1,24 @@
 import { useState, useEffect, useRef } from "react";
 import { ILogSection, IReplay } from "./util/interfaces";
+import cookies from "js-cookie"
 export default function Result({ author, result, log }) {
   const logRef = useRef(log);
   const timerOuts = useRef(null);
   const [replaySpeed, setReplaySpeed] = useState(1);
   const [replay, setReplay] = useState<IReplay[]>([]);
+  useEffect(() => {
+    if (cookies.get("loggedIn")) {
+      fetch("http://localhost:3000/private/logSection", {
+        method: "POST",
+        body: JSON.stringify(log),
+        headers: { "Content-Type": "application/json" },
+        credentials: 'include'
+      })
+        .then((res) => res.json())
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }
+  }, []);
   useEffect(() => {
     const logTop: ILogSection = logRef.current[0];
     if (logTop == undefined) return;
@@ -16,13 +30,13 @@ export default function Result({ author, result, log }) {
           return;
         }
         const right = logTop.written === logTop.current;
-          setReplay((replay) => [
-            ...replay,
-            {
-              written: logTop.written,
-              right: right,
-            },
-          ]);
+        setReplay((replay) => [
+          ...replay,
+          {
+            written: logTop.written,
+            right: right,
+          },
+        ]);
       },
       (logTop.time * 10) / replaySpeed,
     );

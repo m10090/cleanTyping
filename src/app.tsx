@@ -3,7 +3,7 @@ import Typing from "./Typing";
 import Navbar from "./navbar";
 import Setting from "./settings/page.tsx";
 import About from "./about/page.tsx";
-import Login from "./login/page.tsx";
+import User from "./user/page.tsx";
 export default function App() {
   return (
     <>
@@ -13,7 +13,7 @@ export default function App() {
           <Route path="/" element={<Typing />} />
           <Route path="/settings" element={<Setting />} />
           <Route path="/about" element={<About />} />
-          <Route path="/user" element={<Login />} />
+          <Route path="/user" element={<User />} />
           <Route path="*" element={<h1>404</h1>} />
         </Routes>
       </div>
