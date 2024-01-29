@@ -8,7 +8,7 @@ export default function Result({ author, result, log }) {
   const [replay, setReplay] = useState<IReplay[]>([]);
   useEffect(() => {
     if (cookies.get("loggedIn")) {
-      fetch("http://localhost:3000/private/logSection", {
+      fetch(import.meta.env.VITE_BACKEND_URI+"private/logSection", {
         method: "POST",
         body: JSON.stringify(log),
         headers: { "Content-Type": "application/json" },
