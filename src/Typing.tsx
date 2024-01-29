@@ -20,7 +20,7 @@ export default function Typing() {
   useEffect(cursorAnimation(right), [right, text]);
   useEffect(typingEvent(setRight, text, right), [text, right]);
   useEffect(timer(setTimerValue), []);
-  if ((right.length === text.length && text.length) || timerValue <= 0) {
+  if (((right.length >= text.length) && text.length) || timerValue <= 0) {
     return (
       <Result author={author.current} result={getResult()} log={getLog()} />
     );
