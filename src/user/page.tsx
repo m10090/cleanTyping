@@ -41,6 +41,10 @@ export default function LoginButton() {
       <button onClick={() => (location.href = `${backendURI}auth/google`)}>
         login with google
       </button>
+      <h1>
+        this is not a real app, it's just a demo to show how to use google
+        it is not secure
+      </h1>
     </div>
   );
 }
