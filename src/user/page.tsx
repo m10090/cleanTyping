@@ -1,4 +1,3 @@
-import cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
 const backendURI = import.meta.env.VITE_BACKEND_URI;
