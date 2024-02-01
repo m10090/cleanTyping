@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { ILogSection, IReplay } from "./util/interfaces";
-import cookies from "js-cookie"
 export default function Result({ author, result, log }) {
   const logRef = useRef(log);
   const timerOuts = useRef(null);
   const [replaySpeed, setReplaySpeed] = useState(1);
   const [replay, setReplay] = useState<IReplay[]>([]);
   useEffect(() => {
-    if (cookies.get("loggedIn")) {
+    if (localStorage.getItem("loggedIn")) {
       fetch(import.meta.env.VITE_BACKEND_URI+"private/logSection", {
         method: "POST",
         body: JSON.stringify(log),
