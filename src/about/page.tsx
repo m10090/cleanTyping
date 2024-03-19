@@ -4,11 +4,8 @@ export default function About() {
       <h1>About Clean Typing</h1>
 
       <p>
-        Welcome to Clean Typing, a cutting-edge typing app designed to enhance
-        your typing skills while providing insightful feedback on your progress.
-        Developed using React, this app combines a user-friendly interface with
-        advanced functionality, making it the perfect tool for individuals
-        looking to improve their typing speed and accuracy.
+        Welcome to Clean Typing, a cutting-edge typing app.
+        Developed using React, this app combines a user-friendly interface
       </p>
 
       <h3>Key Features:</h3>
@@ -33,14 +30,8 @@ export default function About() {
         </li>
       </ul>
 
-
       <p>
-        <strong>Start Typing, Start Improving</strong>
-      </p>
-
-
-      <p>
-        Find us on{" "}
+        help me{" "}
         <a href="https://github.com/m10090/cleanTyping" target="_blank">
           GitHub
         </a>{" "}

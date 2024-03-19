@@ -27,4 +27,3 @@ export async function getText(
   const k = data.content.split("");
   setText(k);
 }
-

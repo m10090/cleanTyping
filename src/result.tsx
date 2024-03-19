@@ -7,11 +7,11 @@ export default function Result({ author, result, log }) {
   const [replay, setReplay] = useState<IReplay[]>([]);
   useEffect(() => {
     if (localStorage.getItem("loggedIn")) {
-      fetch(import.meta.env.VITE_BACKEND_URI+"private/logSection", {
+      fetch(import.meta.env.VITE_BACKEND_URI + "private/logSection", {
         method: "POST",
         body: JSON.stringify(log),
         headers: { "Content-Type": "application/json" },
-        credentials: 'include'
+        credentials: "include",
       })
         .then((res) => res.json())
         .then((res) => console.log(res))

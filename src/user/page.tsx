@@ -13,7 +13,7 @@ export default function LoginButton() {
       .then((res) => res.json())
       .then((res) => {
         setName(res.name);
-        setPhoto(res.photo)
+        setPhoto(res.photo);
       });
   }, []);
   if (localStorage.getItem("loggedIn")) {
@@ -42,8 +42,8 @@ export default function LoginButton() {
         login with google
       </button>
       <h1>
-        this is not a real app, it's just a demo to show how to use google
-        it is not secure
+        this is not a real app, it's just a demo to show how to use google it is
+        not secure
       </h1>
     </div>
   );
