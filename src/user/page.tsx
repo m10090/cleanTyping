@@ -16,7 +16,7 @@ export default function LoginButton() {
         setPhoto(res.photo);
       });
   }, []);
-  if (localStorage.getItem("loggedIn").toLowerCase() === "true") {
+  if (localStorage.getItem("loggedIn")?.toLowerCase() === "true") {
     return (
       <div className="center-content">
         <img
