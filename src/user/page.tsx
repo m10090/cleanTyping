@@ -10,11 +10,24 @@ export default function LoginButton() {
     fetch(backendURI + "private/profile", {
       credentials: "include",
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.ok) return res.json();
+        else {
+          localStorage.setItem("loggedIn", undefined);
+          window.location.reload();
+        }
+      })
       .then((res) => {
         setName(res.name);
         setPhoto(res.photo);
-      });
+      })
+      .catch(
+        // loging out if no response
+        () => {
+          localStorage.setItem("loggedIn", undefined);
+          window.location.reload();
+        },
+      );
   }, []);
   if (localStorage.getItem("loggedIn")?.toLowerCase() === "true") {
     return (
