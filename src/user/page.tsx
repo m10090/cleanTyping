@@ -6,7 +6,7 @@ export default function LoginButton() {
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState("");
   useEffect(() => {
-    if (!(localStorage.getItem("loggedIn").toLowerCase() === "true")) return;
+    if (!(localStorage.getItem("loggedIn")?.toLowerCase() === "true")) return;
     fetch(backendURI + "private/profile", {
       credentials: "include",
     })
