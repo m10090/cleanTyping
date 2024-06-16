@@ -9,7 +9,7 @@ const obj = qs.parse(window.location.search, { ignoreQueryPrefix: true });
 Object.keys(obj).forEach((key) => {
   localStorage.setItem(key, obj[key]);
 });
-if (obj.loggedIn) window.location.href = window.location.pathname;
+if (obj.loggedIn === "true") window.location.href = window.location.pathname;
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

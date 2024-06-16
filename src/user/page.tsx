@@ -6,7 +6,7 @@ export default function LoginButton() {
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState("");
   useEffect(() => {
-    if (!localStorage.getItem("loggedIn")) return;
+    if (!(localStorage.getItem("loggedIn").toLowerCase() === "true")) return;
     fetch(backendURI + "private/profile", {
       credentials: "include",
     })
@@ -16,7 +16,7 @@ export default function LoginButton() {
         setPhoto(res.photo);
       });
   }, []);
-  if (localStorage.getItem("loggedIn")) {
+  if (localStorage.getItem("loggedIn").toLowerCase() === "true") {
     return (
       <div className="center-content">
         <img
